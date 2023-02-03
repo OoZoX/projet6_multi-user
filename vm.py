@@ -45,7 +45,7 @@ if vmId.isdigit():
         
         if action == 1:
             node = proxmox.nodes('GP6').status.get()
-            ramDispo = (node['memory']['free']) // 1000000
+            ramDispo = int((node['memory']['free']) // 1000000)
             print("\n\n\n")
             print("Il reste " + str(ramDispo) + "MB de libre")
             print("\n\n\n")
@@ -56,7 +56,7 @@ if vmId.isdigit():
             newRam = input("Entrer la nouvelle quantité de ram souhaité en MB : ")
             
             if newRam.isdigit():
-                
+                newRam = int(newRam)
                 if newRam <= ramDispo:
                     try:
                         proxmox.nodes('GP6').qemu(vmId).config.post(memory=newRam)
