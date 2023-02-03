@@ -1,5 +1,22 @@
 import proxmoxer
 
+def startVm(proxmox, vmId):
+    proxmox.nodes('GP6').qemu(vmId).status.post(action='start')
+
+def stopVm(proxmox, vmId):
+    proxmox.nodes('GP6').qemu(vmId).status.post(action='stop')
+
+def restartVm(proxmox, vmId):
+    proxmox.nodes('GP6').qemu(vmId).status.post(action='reset')
+
+def statusVm(proxmox, vmId):
+    print(proxmox.nodes('<node>').qemu(vmId).status.get()['status'])
+
+def configVm(proxmox, vmId):
+    return proxmox.nodes('GP6').qemu(vmId).config.get()
+
+
+go = True
 proxmox = proxmoxer.ProxmoxAPI('192.168.1.10', user='root@pam', password='Betarr0103.', verify_ssl=False)
 
 
@@ -11,6 +28,7 @@ print("102 : Slave")
 print("103 : Apache serveur")
 print("104 : Master \n")
 vmId = input("Choix : ")
+
 if vmId.isdigit():
     vmId = int(vmId)
     print("\nChoisir action avec numero 1 - 4 :")
@@ -19,14 +37,40 @@ if vmId.isdigit():
     print("3. Redemarer VM")
     print("4. Eteindre VM\n")
     action = input("Choix : ")
+    
     if action.isdigit():
         action = int(action)
+        
         if action == 1:
             node = proxmox.nodes('GP6').status.get()
-            ramDispo = node['memory']['free']
+            ramDispo = (node['memory']['free']) // 1000000
+            print("\n\n\n")
             print("Il reste ", ramDispo, "MB de libre")
-            configVm = proxmox.nodes('GP6').qemu(vmId).config.get()
-            print(configVm)
+            print("\n\n\n")
+            config = configVm(proxmox, vmId)  
+            print("\n\n\n")
+            print("Nom de la Vm : ", configVm['name'])
+            print("Ram actuelle : ", configVm['memory'])
+            newRam = input("Entrer la nouvelle quantité de ram souhaité en MB : ")
+            
+            if newRam.isdigit():
+                
+                if newRam <= ramDispo:
+                    try:
+                        proxmox.nodes('GP6').qemu(vmId).config.post(memory=newRam)
+                        print("changement ok !")
+                        config = configVm(proxmox, vmId)
+                        print("Nouvelle RAM : ", config['memory'], " MB")
+                        print("Redemarage de la vm")
+                        restartVm(proxmox, vmId)
+                        startVm(proxmox, vmId)
+                    except:
+                        print("echeque de la modification de ram")
+
+        elif action == 5:
+            print(configVm(proxmox, vmId))
+
+
     else:
         print("pas int")
 else:
