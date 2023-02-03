@@ -27,6 +27,8 @@ if vmId.isdigit():
             print("Il reste ", ramDispo, "MB de libre")
             configVm = proxmox.nodes('GP6').qemu(vmId).config.get()
             print(configVm)
+    else:
+        print("pas int")
 else:
     print("Arrete de me prendre et rentre un entier stp !")
     print("maintenant tu na plus qu'a relancer le script")
