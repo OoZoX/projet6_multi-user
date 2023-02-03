@@ -8,6 +8,9 @@ echo "103 : Apache serveur"
 echo "104 : Master"
 read vmID
 
+echo ""
+echo ""
+
 echo "Choisir action avec numero 1 - 4 :"
 echo "1. Modifier RAM"
 echo "2. Modifier Processeur"
@@ -18,6 +21,7 @@ read vmAction
 if [ "$vmAction" == "1" ]; then
     ramDispo=$(free -m | grep Mem | awk '{print $7}')
     echo "Entrer nouvelle valeur de RAM souhaité en MB"
+    echo "Pour information il reste : $ramDispo MB"
     read ram
 
     if [ $ram -le $ramDispo ]; then
