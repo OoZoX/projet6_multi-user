@@ -95,9 +95,12 @@ elif [ "$vmAction" == "2" ]; then
     qm reboot 102
 
 elif [ "$vmAction" == "3" ]; then
+    echo "Redemarage VM"
     qm reboot 102
 elif [ "$vmAction" == "4" ]; then
+    echo "Shutdown VM"
     qm shutdown 102
 elif [ "$vmAction" == "5" ]; then
+    echo "Start VM"
     qm start 102
 fi
