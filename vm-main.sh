@@ -3,11 +3,11 @@ echo "1. Modifier RAM"
 echo "2. Modifier Processeur"
 echo "3. Redemarer VM"
 echo "4. Eteindre VM"
+echo "4. Demarer VM"
 read -p "Choix : " vmAction
 
 if [ "$vmAction" == "1" ]; then
-    ramDispo=$(free -m | grep Mem | awk '{print $7}')
-    echo "Pour information il reste : $ramDispo MB"
+
     echo ""
     echo "Choisir nouvelle valeur de la ram : "
     echo "1 : 1 Go"
@@ -64,4 +64,40 @@ if [ "$vmAction" == "1" ]; then
     fi
 
     qm reboot 102
+
+elif [ "$vmAction" == "2" ]; then
+    echo ""
+    echo "Choisir nouveau nombre de coeur : "
+    echo " 1 : 1 coeur"
+    echo " 2 : 2 coeur"
+    echo " 3 : 3 coeur"
+    echo " 4 : 4 coeur"
+    echo " 5 : 5 coeur"
+    echo " 6 : 6 coeur"
+    read cores
+
+    if [ "$cores" == "1" ]; then
+        qm set 102 --cores 1
+    elif [ "$cores" == "2" ]; then
+        qm set 102 --cores 2
+    elif [ "$cores" == "3" ]; then
+        qm set 102 --cores 3
+    elif [ "$cores" == "4" ]; then
+        qm set 102 --cores 4
+    elif [ "$cores" == "5" ]; then
+        qm set 102 --cores 5
+    elif [ "$cores" == "6" ]; then
+        qm set 102 --cores 6
+    else
+        echo "mauvaise entré tu peux recommancer"
+    fi
+
+    qm reboot 102
+
+elif [ "$vmAction" == "3" ]; then
+    qm reboot 102
+elif [ "$vmAction" == "4" ]; then
+    qm shutdown 102
+elif [ "$vmAction" == "5" ]; then
+    qm start 102
 fi
