@@ -47,12 +47,12 @@ if vmId.isdigit():
             node = proxmox.nodes('GP6').status.get()
             ramDispo = (node['memory']['free']) // 1000000
             print("\n\n\n")
-            print("Il reste ", ramDispo, "MB de libre")
+            print("Il reste " + ramDispo + "MB de libre")
             print("\n\n\n")
             config = configVm(proxmox, vmId)  
             print("\n\n\n")
-            print("Nom de la Vm : ", configVm['name'])
-            print("Ram actuelle : ", configVm['memory'])
+            print("Nom de la Vm : " + configVm['name'])
+            print("Ram actuelle : " + configVm['memory'])
             newRam = input("Entrer la nouvelle quantité de ram souhaité en MB : ")
             
             if newRam.isdigit():
@@ -62,7 +62,7 @@ if vmId.isdigit():
                         proxmox.nodes('GP6').qemu(vmId).config.post(memory=newRam)
                         print("changement ok !")
                         config = configVm(proxmox, vmId)
-                        print("Nouvelle RAM : ", config['memory'], " MB")
+                        print("Nouvelle RAM : " + config['memory'], " MB")
                         print("Redemarage de la vm")
                         restartVm(proxmox, vmId)
                         startVm(proxmox, vmId)
