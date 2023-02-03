@@ -1,3 +1,5 @@
+echo ""
+echo ""
 echo "Entrer ID de la VM à modifier : "
 echo "Pour information :"
 echo "100 : pfsense"
@@ -25,12 +27,13 @@ if [ "$vmAction" == "1"]; then
         echo "Tu me crois assez con pour te faire confiance ? MDR"
         echo "Juste pour information il reste $ramDispo MB"
         echo "Maintenant tu a le drois de pleurer et recommancer ta modif. Aller Bis :)"
+    fi
 elif [ "$vmAction" == "2"]; then
-
+    echo "a venir"
 elif [ "$vmAction" == "3"]; then
-
+    echo "a venir"
 elif [ "$vmAction" == "4"]; then
-
+    echo "a venir"
 else
     echo "Tu te crois malin a pas entrer un chiffre ?"
     echo "Pour la peine je ferais rien. Domage :("
