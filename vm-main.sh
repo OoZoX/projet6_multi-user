@@ -28,40 +28,40 @@ if [ "$vmAction" == "1" ]; then
     read quant
     echo ""
     echo "Nouvelle valeur Ram $quant Go"
-    if ["$quant" == "1"]; then
+    if [ "$quant" == "1" ]; then
         qm set 102 --memory 1000
-    elif ["$quant" == "2"]; then
+    elif [ "$quant" == "2" ]; then
         qm set 102 --memory 2000
-    elif ["$quant" == "3"]; then
+    elif [ "$quant" == "3" ]; then
         qm set 102 --memory 3000
-    elif ["$quant" == "4"]; then
+    elif [ "$quant" == "4" ]; then
         qm set 102 --memory 4000
-    elif ["$quant" == "5"]; then
+    elif [ "$quant" == "5" ]; then
         qm set 102 --memory 5000
-    elif ["$quant" == "6"]; then
+    elif [ "$quant" == "6" ]; then
         qm set 102 --memory 6000
-    elif ["$quant" == "7"]; then
+    elif [ "$quant" == "7" ]; then
         qm set 102 --memory 7000
-    elif ["$quant" == "8"]; then
+    elif [ "$quant" == "8" ]; then
         qm set 102 --memory 8000
-    elif ["$quant" == "9"]; then
+    elif [ "$quant" == "9" ]; then
         qm set 102 --memory 9000
-    elif ["$quant" == "10"]; then
+    elif [ "$quant" == "10" ]; then
         qm set 102 --memory 10000
-    elif ["$quant" == "11"]; then
+    elif [ "$quant" == "11" ]; then
         qm set 102 --memory 11000
-    elif ["$quant" == "12"]; then
+    elif [ "$quant" == "12" ]; then
         qm set 102 --memory 12000
-    elif ["$quant" == "13"]; then
+    elif [ "$quant" == "13" ]; then
         qm set 102 --memory 13000
-    elif ["$quant" == "14"]; then
+    elif [ "$quant" == "14" ]; then
         qm set 102 --memory 14000
-    elif ["$quant" == "15"]; then
+    elif [ "$quant" == "15" ]; then
         qm set 102 --memory 15000
     else
         echo "entré pas bon"
 
     fi
 
-    qm restart 102
+    qm reboot 102
 fi
