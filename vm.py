@@ -51,8 +51,8 @@ if vmId.isdigit():
             print("\n\n\n")
             config = configVm(proxmox, vmId)  
             print("\n\n\n")
-            print("Nom de la Vm : " + str(configVm['name']))
-            print("Ram actuelle : " + str(configVm['memory']))
+            print("Nom de la Vm : " + str(config['name']))
+            print("Ram actuelle : " + str(config['memory']))
             newRam = input("Entrer la nouvelle quantité de ram souhaité en MB : ")
             
             if newRam.isdigit():
