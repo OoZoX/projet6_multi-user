@@ -6,7 +6,7 @@ echo "100 : pfsense"
 echo "102 : Slave"
 echo "103 : Apache serveur"
 echo "104 : Master"
-read vmID
+read -p "Choix : " vmID
 
 echo ""
 echo ""
@@ -16,7 +16,7 @@ echo "1. Modifier RAM"
 echo "2. Modifier Processeur"
 echo "3. Redemarer VM"
 echo "4. Eteindre VM"
-read vmAction
+read -p "Choix : " vmAction
 
 if [ "$vmAction" == "1" ]; then
     vmIdInt=$((10#vmId))
