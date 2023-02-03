@@ -47,7 +47,7 @@ if vmId.isdigit():
             node = proxmox.nodes('GP6').status.get()
             ramDispo = (node['memory']['free']) // 1000000
             print("\n\n\n")
-            print("Il reste " + ramDispo + "MB de libre")
+            print("Il reste " + str(ramDispo) + "MB de libre")
             print("\n\n\n")
             config = configVm(proxmox, vmId)  
             print("\n\n\n")
