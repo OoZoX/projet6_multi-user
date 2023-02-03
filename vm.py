@@ -7,7 +7,9 @@ def stopVm(proxmox, vmId):
     proxmox.nodes('GP6').qemu(vmId).status.post(action='stop')
 
 def restartVm(proxmox, vmId):
+    print("redemarage Vm")
     proxmox.nodes('GP6').qemu(vmId).status.post(action='reset')
+    statusVm(proxmox, vmId)
 
 def statusVm(proxmox, vmId):
     print(proxmox.nodes('<node>').qemu(vmId).status.get()['status'])
@@ -66,7 +68,8 @@ if vmId.isdigit():
                         startVm(proxmox, vmId)
                     except:
                         print("echeque de la modification de ram")
-
+        elif action == 3:
+            restartVm(proxmox, vmId)
         elif action == 5:
             print(configVm(proxmox, vmId))
 
