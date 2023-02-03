@@ -21,7 +21,7 @@ if vmId.isdigit():
     action = input("Choix : ")
     if action.isdigit():
         action = int(action)
-        if vmId == 1:
+        if action == 1:
             node = proxmox.nodes('GP6').status.get()
             ramDispo = node['memory']['free']
             print("Il reste ", ramDispo, "MB de libre")
