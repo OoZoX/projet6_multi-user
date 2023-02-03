@@ -29,7 +29,7 @@ if [ "$vmAction" == "1" ]; then
     let ramInt=ram
     
     if [ $ramInt -le $ramDispo ]; then
-        qm set echo $vmIDInt --memory echo $ramInt
+        echo "qm set $vmIDInt --memory $ramInt"
         echo "Modification de la ram reussi. Nouvelle valeur : $ram MB"
     else
         echo "Tu me crois assez con pour te faire confiance ? MDR"
