@@ -1,6 +1,6 @@
 import proxmoxer
 
-proxmox = proxmoxer.ProxmoxAPI('192.168.1.10', user='root', password='Betarr0103.', verify_ssl=False)
+proxmox = proxmoxer.ProxmoxAPI('192.168.1.10', user='root@pam', password='Betarr0103.', verify_ssl=False)
 
 
 print("Entrer l'id de la vm a modifier")
