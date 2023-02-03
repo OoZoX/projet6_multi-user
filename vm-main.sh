@@ -19,14 +19,14 @@ echo "4. Eteindre VM"
 read -p "Choix : " vmAction
 
 if [ "$vmAction" == "1" ]; then
-    let vmIdInt=vmId
+    let "vmIdInt=vmId"
     echo $vmIDint
     ramDispo=$(free -m | grep Mem | awk '{print $7}')
     echo "Entrer nouvelle valeur de RAM souhaité en MB"
     echo "Pour information il reste : $ramDispo MB"
     
     read ram
-    let ramInt=ram
+    let "ramInt=ram"
     
     if [ $ramInt -le $ramDispo ]; then
         qm set "$vmIDInt" --memory "$ramInt"
