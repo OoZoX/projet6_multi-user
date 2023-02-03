@@ -28,7 +28,7 @@ if [ "$vmAction" == "1" ]; then
     ram=$(( ram ))
     
     if [ $ram -le $ramDispo ]; then
-        qm set expr vmID --memory $ram
+        qm set vmID --memory $ram
         echo "Modification de la ram reussi. Nouvelle valeur : $ram MB"
     else
         echo "Tu me crois assez con pour te faire confiance ? MDR"
